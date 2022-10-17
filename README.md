@@ -29,6 +29,10 @@ just add `HMODULE SampleHookDllModule = LoadLibrary(TEXT("virtualAllocHook.dll")
 
 By doing so, you could see the message box + the API call itself in API Monitor.
 
+## What this POC DOESN'T cover
+- Static Analysys - Security products could still flag this code as malicious by static analysis.
+- Hides network activity - Even if you use syscalls to make network actions, it could still be monitored (both on the network card level, and network firewall).
+- Patch the hook - You could patch the hook by loading a copy of the desired DLL from disk, and using it's own un-modified functions, or just overrite the hook itself, but some security products check if the hook has been patched, so i just avoid it.
 
 ## Disclamer 
 This project is purely for learning purposes, and is not meant to be used in any illegal or unethical way.
